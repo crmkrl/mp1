@@ -42,9 +42,9 @@ void FixedPoint(int precision) {
 
 	cout<< setprecision(precision)<< fixed;
 
-    cout<<"Enter polynomial function f(x): ";
+    cout<<"Enter f(x): ";
     cin>>fx;
-    cout<<"Enter transcendental function g(x): ";
+    cout<<"Enter g(x): ";
     cin>>gx;
     cout<<"Enter initial value x(0): ";
     cin>>x0;
