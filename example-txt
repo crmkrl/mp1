@@ -1,0 +1,60 @@
+Examples:
+
+1. Fixed Point
+
+#define   f(x)   cos(x)-3*x+1
+#define   g(x)   (1+cos(x))/3
+
+Enter initial guess: 1
+Enter tolerable error: 0.000001
+Enter maximum iteration: 10
+
+**************************
+Fixed Point Iteration Method
+**************************
+Iteration-1:     x1 =   0.513434 and f(x1) =   0.330761
+Iteration-2:     x1 =   0.623688 and f(x1) =  -0.059333
+Iteration-3:     x1 =   0.603910 and f(x1) =   0.011391
+Iteration-4:     x1 =   0.607707 and f(x1) =  -0.002162
+Iteration-5:     x1 =   0.606986 and f(x1) =   0.000411
+Iteration-6:     x1 =   0.607124 and f(x1) =  -0.000078
+Iteration-7:     x1 =   0.607098 and f(x1) =   0.000015
+Iteration-8:     x1 =   0.607102 and f(x1) =  -0.000003
+Iteration-9:     x1 =   0.607102 and f(x1) =   0.000001
+
+
+2. Gauss-Seidel
+
+#define f1(x,y,z)  (17-y+2*z)/20
+#define f2(x,y,z)  (-18-3*x+z)/20
+#define f3(x,y,z)  (25-2*x+3*y)/20
+
+Enter tolerable error: 0.0000001
+
+Count   x               y               z
+1       0.850000        -1.027500       1.010875
+2       1.002463        -0.999826       0.999780
+3       0.999969        -1.000006       1.000002
+4       1.000000        -1.000000       1.000000
+5       1.000000        -1.000000       1.000000
+
+Solution: x = 1.000000, y = -1.000000 and z = 1.000000
+
+3. Lagrange
+
+Enter number of data: 5
+Enter data:
+x[1] = 5
+y[1] = 150
+x[2] = 7
+y[2] = 392
+x[3] = 11
+y[3] = 1452
+x[4] = 13
+y[4] = 2366
+x[5] = 17
+y[5] = 5202
+Enter interpolation point: 9
+
+Expected Output:
+Interpolated value at 9 is 810

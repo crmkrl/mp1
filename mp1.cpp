@@ -30,10 +30,10 @@ float Fparser(std::string expression_string, float value)
    expression.register_symbol_table(symbol_table);
 
    parser_t parser;
-   parser.compile(expression_string,expression);
+   parser.compile(expression_string,expression);    //expression --mathematical expression
 
    T result = expression.value();
-   return result;
+   return result;   //number
 }
 void FixedPoint(int precision) {
 	int step=1, N;
@@ -71,7 +71,6 @@ void FixedPoint(int precision) {
 
 	cout<< endl<<"Root is "<< x1<< endl;
 	cout<<"**************************"<< endl;
-
 }
 
 float GSparser(std::string expression_string, float x_value, float y_value, float z_value)
@@ -139,22 +138,21 @@ void GaussSeidel(int precision) {
 }
 
 void Lagrange(int precision) {
-	 float x[100], y[100], xp, yp=0, p;
-	 int i,j,n;
+	float x[100], y[100], xp, yp=0, p;
+	int i,j,n;
 
-	 cout<<"Enter number of data: ";
-	 cin>>n;
-	 cout<<"Enter data:"<< endl;
-	 for(i=1;i<=n;i++)
-	 {
+	cout<<"Enter number of data: ";
+	cin>>n;
+	cout<<"Enter data:"<< endl;
+	for(i=1;i<=n;i++)
+	{
 		  cout<<"x["<< i<<"] = ";
 		  cin>>x[i];
 		  cout<<"y["<< i<<"] = ";
 		  cin>>y[i];
-	 }
-	 cout<<"Enter interpolation point: ";
-	 cin>>xp;
-
+	}
+	cout<<"Enter interpolation point: ";
+	cin>>xp;
 	cout<< endl<<"**************************"<< endl;
 	cout<<"Lagrange Method"<< endl;
 	cout<<"**************************"<< endl;
@@ -174,26 +172,64 @@ void Lagrange(int precision) {
 	cout<<"**************************"<< endl;
 }
 
+vector<int> Validation() {
+    vector<int> methods= {0, 0, 0};
+    string f_ans, gx_ans; 
+    int f_num_ans;
+
+    cout<<"Do you want to enter a function? Press y/n: ";
+    cin>>f_ans;
+    if (f_ans=="y" || f_ans=="Y") {
+        cout<<"How many functions do you have? ";
+        cin>>f_num_ans;
+        if (f_num_ans<0) {
+            cout<<"Incorrect value.";
+        } else {
+            if (f_num_ans==0) {
+                cout<<"You need to enter # of equations for these methods.";
+            } else {
+                if (f_num_ans!=1) {
+                    cout<<"Is the other equation a derived value of x? ";
+                    cin>>gx_ans;
+                    if (gx_ans=="y" || gx_ans=="Y") {
+                        methods = {1, 0, 0}; //Fixed Point
+                    } else {
+                        methods = {0, 1, 0};  //Gauss-Seidel
+                    }
+                } else {
+                    //DO NOTHING --
+                    cout<<"Invalid.";
+                }
+            }
+        }
+    } else {
+        methods = {0, 0, 1}; //Lagrange
+    }
+    return methods;
+}
+
 int main()
 {
     bool a=true;
     std::string ans;
     int mode;
     int precision;
+    vector<int> methods= {0, 0, 0};
 
+    cout<<"Enter precision: ";
+    cin>>precision;
     while(a) {
-        cout<<"Enter method (1)Fixed Point (2)Gauss-Seidel (3)Lagrange: ";
-        cin>>mode;
-        cout<<"Enter precision: ";
-        cin>>precision;
-        if (mode==1) {
-            FixedPoint(precision);
-        } else if (mode==2) {
-            GaussSeidel(precision);
-        } else if (mode==3) {
-            Lagrange(precision);
-        } else {
-            //DO NOTHING for now
+        methods = Validation();
+        for (int i=0; i <= methods.size(); i++) {
+            if (methods[i]==1) {
+                int count = i;
+                switch (count) {
+                case 0: FixedPoint(precision); break;
+                case 1: GaussSeidel(precision); break;
+                case 2: Lagrange(precision); break;
+                default: break;
+                }
+            }
         }
 
         cout<<"Try again? Press y/n: ";
