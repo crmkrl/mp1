@@ -41,7 +41,9 @@ void FixedPoint(int precision) {
     float x0, x1,e;
 
 	cout<< setprecision(precision)<< fixed;
-
+	cout<< endl<<"**************************"<< endl;
+	cout<<"Fixed Point Iteration Method"<< endl;
+	cout<<"**************************"<< endl;
     cout<<"Enter f(x): ";
     cin>>fx;
     cout<<"Enter g(x): ";
@@ -52,9 +54,7 @@ void FixedPoint(int precision) {
 	cin>>e;
     cout<<"Enter iterations: ";
     cin>>N;
-	cout<< endl<<"**************************"<< endl;
-	cout<<"Fixed Point Iteration Method"<< endl;
-	cout<<"**************************"<< endl;
+
     do {
 		  x1 = Fparser<double>(gx, x0);
 		  cout<<"Iteration-"<< step<<":\t x1 = "<< setw(10)<< x1<<" and f(x1) = "<< setw(10)<< Fparser<double>(fx, x1)<< endl;
@@ -104,6 +104,9 @@ void GaussSeidel(int precision) {
     int step=1;
     cout<< setprecision(precision)<< fixed;
 
+	cout<< endl<<"**************************"<< endl;
+	cout<<"Gauss-Seidel Method"<< endl;
+	cout<<"**************************"<< endl;
     cout<<"Enter f1: ";
     cin>>f1;
     cout<<"Enter f2: ";
@@ -112,10 +115,6 @@ void GaussSeidel(int precision) {
     cin>>f3;
     cout<<"Enter tolerable error: ";
     cin>>e;
-
-	cout<< endl<<"**************************"<< endl;
-	cout<<"Gauss-Seidel Method"<< endl;
-	cout<<"**************************"<< endl;
 
     cout<< endl<<"Count\tx\t\ty\t\tz"<< endl;
     do {
@@ -141,6 +140,9 @@ void Lagrange(int precision) {
 	float x[100], y[100], xp, yp=0, p;
 	int i,j,n;
 
+	cout<< endl<<"**************************"<< endl;
+	cout<<"Lagrange Method"<< endl;
+	cout<<"**************************"<< endl;
 	cout<<"Enter number of data: ";
 	cin>>n;
 	cout<<"Enter data:"<< endl;
@@ -153,11 +155,8 @@ void Lagrange(int precision) {
 	}
 	cout<<"Enter interpolation point: ";
 	cin>>xp;
-	cout<< endl<<"**************************"<< endl;
-	cout<<"Lagrange Method"<< endl;
-	cout<<"**************************"<< endl;
-	 for(i=1;i<=n;i++)
-	 {
+	for(i=1;i<=n;i++)
+	{
 		  p=1;
 		  for(j=1;j<=n;j++)
 		  {
@@ -180,27 +179,14 @@ vector<int> Validation() {
     cout<<"Do you want to enter a function? Press y/n: ";
     cin>>f_ans;
     if (f_ans=="y" || f_ans=="Y") {
-        cout<<"How many functions do you have? ";
-        cin>>f_num_ans;
-        if (f_num_ans<0) {
-            cout<<"Incorrect value.";
+        cout<<"Is the other equation a derived value of x? ";
+        cin>>gx_ans;
+        if (gx_ans=="y" || gx_ans=="Y") {
+            methods = {1, 0, 0}; //Fixed-Point
+        } else if (gx_ans=="n" || gx_ans=="N") {
+            methods = {0, 1, 0}; //Gauss-Seidel
         } else {
-            if (f_num_ans==0) {
-                cout<<"You need to enter # of equations for these methods.";
-            } else {
-                if (f_num_ans!=1) {
-                    cout<<"Is the other equation a derived value of x? ";
-                    cin>>gx_ans;
-                    if (gx_ans=="y" || gx_ans=="Y") {
-                        methods = {1, 0, 0}; //Fixed Point
-                    } else {
-                        methods = {0, 1, 0};  //Gauss-Seidel
-                    }
-                } else {
-                    //DO NOTHING --
-                    cout<<"Invalid.";
-                }
-            }
+            cout<<"Invalid input.";
         }
     } else {
         methods = {0, 0, 1}; //Lagrange
@@ -222,8 +208,7 @@ int main()
         methods = Validation();
         for (int i=0; i <= methods.size(); i++) {
             if (methods[i]==1) {
-                int count = i;
-                switch (count) {
+                switch (i) {
                 case 0: FixedPoint(precision); break;
                 case 1: GaussSeidel(precision); break;
                 case 2: Lagrange(precision); break;
