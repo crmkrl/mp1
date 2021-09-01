@@ -1,5 +1,5 @@
 /* MP1 
-** Author: Rojas, 2021
+** Author: Rojas, Martin, Olleres 2021
 */
 
 #include <cstdio>
@@ -52,22 +52,19 @@ void FixedPoint(int precision) {
     cin>>x0;
 	cout<<"Enter tolerable error: ";
 	cin>>e;
-    // cout<<"Enter iterations: ";
-    // cin>>N;
 
     do {
-		  x1 = Fparser<double>(gx, x0);
-		  cout<<"Iteration-"<< step<<":\t x1 = "<< setw(10)<< x1<<" and f(x1) = "<< setw(10)<< Fparser<double>(fx, x1)<< endl;
-		  step = step + 1;
-          iter_err = fabs(x1-x0);
-		  if(step>100)
-		  {
-			   cout<<"Not Convergent.";
-			   exit(0);
-		  }
+        x1 = Fparser<double>(gx, x0);
+        cout<<"Iteration-"<< step<<":\t x1 = "<< setw(10)<< x1<<" and f(x1) = "<< setw(10)<< Fparser<double>(fx, x1)<< endl;
+        step = step + 1;
+        iter_err = fabs(x1-x0);
+        if(step>100)
+        {
+            cout<<"Not Convergent.";
+            exit(0);
+        }
 
-		  x0 = x1;
-	//  }while( fabs(Fparser<double>(q, x1)) > e);
+        x0 = x1;
 	 }while( iter_err > e);
 
 	cout<< endl<<"Root is "<< x1<< endl;
