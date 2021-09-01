@@ -38,7 +38,7 @@ float Fparser(std::string expression_string, float value)
 void FixedPoint(int precision) {
 	int step=1, N;
     std::string fx, gx;
-    float x0, x1,e;
+    float x0, x1,e, iter_err;
 
 	cout<< setprecision(precision)<< fixed;
 	cout<< endl<<"**************************"<< endl;
@@ -52,22 +52,23 @@ void FixedPoint(int precision) {
     cin>>x0;
 	cout<<"Enter tolerable error: ";
 	cin>>e;
-    cout<<"Enter iterations: ";
-    cin>>N;
+    // cout<<"Enter iterations: ";
+    // cin>>N;
 
     do {
 		  x1 = Fparser<double>(gx, x0);
 		  cout<<"Iteration-"<< step<<":\t x1 = "<< setw(10)<< x1<<" and f(x1) = "<< setw(10)<< Fparser<double>(fx, x1)<< endl;
 		  step = step + 1;
-
-		  if(step>N)
+          iter_err = fabs(x1-x0);
+		  if(step>100)
 		  {
 			   cout<<"Not Convergent.";
 			   exit(0);
 		  }
 
 		  x0 = x1;
-	 }while( fabs(Fparser<double>(fx, x1)) > e);
+	//  }while( fabs(Fparser<double>(q, x1)) > e);
+	 }while( iter_err > e);
 
 	cout<< endl<<"Root is "<< x1<< endl;
 	cout<<"**************************"<< endl;
