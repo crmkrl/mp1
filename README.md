@@ -41,6 +41,7 @@ As a user, you don't need to build or compile. You just run in the terminal. Mak
 
 
 #### Linux OS
+    > You can watch the tutorial video located on docs/linux-tutorial
 
 1. Open the repository in VS Code.
 2. Change anything in the code (mp1.cpp) to test then build the code.
@@ -54,6 +55,8 @@ As a user, you don't need to build or compile. You just run in the terminal. Mak
     ```
 
 #### MACOS:
+    > You can watch the tutorial video located on docs/macos-tutorial
+
 
 1. Open the repository in VS Code.
 2. Change anything in the code (mp1.cpp) to test then build the code.
