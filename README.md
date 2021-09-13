@@ -42,21 +42,22 @@ As a user, you don't need to build or compile. You just run in the terminal. Mak
 
 
 #### Linux OS
-    > You can watch the tutorial video located on docs/linux-tutorial
+You can watch the tutorial video located on docs/linux-tutorial
 
 1. Open the repository in VS Code.
 2. Change anything in the code (mp1.cpp) to test then build the code.
 
     > Press CTRL+SHIFT+B for building the mp1.cpp code. It will create a binary file mp1. This is the same executable file located in mp1/bin - mp1-linux.
 
-3. You can just run ./mp1 in the terminal. 
+3. You can just run ./mp1 in the terminal.  ./mp1
+
     > Note that the binary file will be created in the same directory path of your current terminal.
     ```
      ./mp1
     ```
 
 #### MACOS:
-    > You can watch the tutorial video located on docs/macos-tutorial
+ You can watch the tutorial video located on docs/macos-tutorial
 
 
 1. Open the repository in VS Code.
