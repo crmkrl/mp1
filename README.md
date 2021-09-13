@@ -12,7 +12,13 @@ Build using VS Code for both Linux and Macos. For Windows, please proceed to mp1
 
 In Visual Studio Code, you can just go the extensions and install directly from there the C/C++ extensions.
 
-Please follow the instructions here: https://code.visualstudio.com/docs/languages/cpp
+Please follow the instructions here:
+
+###### LINUX OS
+https://code.visualstudio.com/docs/cpp/config-linux
+
+###### MACOS
+https://code.visualstudio.com/docs/cpp/config-clang-mac
 
 ## Running the code
 
