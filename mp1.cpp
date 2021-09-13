@@ -30,13 +30,13 @@ float Fparser(std::string expression_string, float value)
    expression.register_symbol_table(symbol_table);
 
    parser_t parser;
-   parser.compile(expression_string,expression);    //expression --mathematical expression
+   parser.compile(expression_string,expression);    
 
    T result = expression.value();
-   return result;   //number
+   return result;   
 }
 void FixedPoint(int precision) {
-	int step=1, N;
+	int step=1;
     std::string fx, gx;
     float x0, x1,e, iter_err;
 
@@ -82,9 +82,9 @@ float GSparser(std::string expression_string, float x_value, float y_value, floa
    T z= T(z_value);
 
    symbol_table_t symbol_table;
-   symbol_table.add_variable("x",x_value);
-   symbol_table.add_variable("y",y_value);
-   symbol_table.add_variable("z",z_value);
+   symbol_table.add_variable("x",x);
+   symbol_table.add_variable("y",y);
+   symbol_table.add_variable("z",z);
    symbol_table.add_constants();
 
    expression_t expression;
@@ -172,7 +172,6 @@ void Lagrange(int precision) {
 vector<int> Validation() {
     vector<int> methods= {0, 0, 0};
     string f_ans, gx_ans; 
-    int f_num_ans;
 
     cout<<"Do you want to enter a function? Press y/n: ";
     cin>>f_ans;
