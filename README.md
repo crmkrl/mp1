@@ -28,13 +28,16 @@ As a user, you don't need to build or compile. You just run in the terminal. Mak
 
 ##### LINUX OS
 
-./mp1-linux
+    
+     ./mp1-linux
+    
 
 ##### MACOS
 
-./mp1-macos.out
-
-
+    
+    ./mp1-macos.out
+    
+    
 > Note: It was tested using Linux and MACOS but if there is an error running the files above, please proceed to installation first.
 
 
