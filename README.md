@@ -30,7 +30,7 @@ For developer, in VS Code.
 Linux OS:
 
 1. Open the repository in VS Code.
-2. Change anything in the code to test then build the code.
+2. Change anything in the code (mp1.cpp) to test then build the code.
 
     > Press CTRL+SHIFT+B for building the mp1.cpp code. It will create a binary file mp1. This is the same executable file located in mp1/bin - mp1-linux.
 
@@ -39,7 +39,7 @@ Linux OS:
 MACOS:
 
 1. Open the repository in VS Code.
-2. Change anything in the code to test then build the code.
+2. Change anything in the code (mp1.cpp) to test then build the code.
 
     > Run the command in the terminal:
 
