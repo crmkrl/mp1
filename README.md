@@ -64,7 +64,7 @@ As a user, you don't need to build or compile. You just run in the terminal. Mak
 
     > Run the command in the terminal:
     ```
-        g++ -std=c++11 mp1.cpp
+    g++ -std=c++11 mp1.cpp
     ```
     
      It will create a obj file a.out. This is the same executable file located in mp1/bin - mp1-macos.out.
