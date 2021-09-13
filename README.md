@@ -1,6 +1,7 @@
 # Machine Problem 1
 
 ## Description
+This branch is for Linux/MACOS User only.
 
 > For submission on Numerical Methods class only
 
