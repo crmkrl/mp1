@@ -15,17 +15,26 @@ using namespace std;
 #include "exprtk.hpp"
 
 template <typename T>
-float Fparser(std::string expression_string, float value)
+float Parser(std::string expression_string, float x_value, float y_value, float z_value, bool mode)
 {
    typedef exprtk::symbol_table<T> symbol_table_t;
    typedef exprtk::expression<T>   expression_t;
    typedef exprtk::parser<T>       parser_t;
-   T x= T(value);
-
    symbol_table_t symbol_table;
-   symbol_table.add_variable("x",x);
-   symbol_table.add_constants();
 
+   if (mode==0) {           //FP
+        T x= T(x_value);
+        symbol_table.add_variable("x",x);
+   } else {                 //GS
+        T x= T(x_value);
+        T y= T(y_value);
+        T z= T(z_value);
+        symbol_table.add_variable("x",x);
+        symbol_table.add_variable("y",y);
+        symbol_table.add_variable("z",z);
+   }
+
+   symbol_table.add_constants();
    expression_t expression;
    expression.register_symbol_table(symbol_table);
 
@@ -54,8 +63,8 @@ void FixedPoint(int precision) {
 	cin>>e;
 
     do {
-        x1 = Fparser<double>(gx, x0);
-        cout<<"Iteration-"<< step<<":\t x1 = "<< setw(10)<< x1<<" and f(x1) = "<< setw(10)<< Fparser<double>(fx, x1)<< endl;
+        x1 = Parser<double>(gx, x0, 0, 0, 0);
+        cout<<"Iteration-"<< step<<":\t x1 = "<< setw(10)<< x1<<" and f(x1) = "<< setw(10)<< Parser<double>(fx, x1, 0, 0, 0)<< endl;
         step = step + 1;
         iter_err = fabs(x1-x0);
         if(step>100)
@@ -71,31 +80,6 @@ void FixedPoint(int precision) {
 	cout<<"**************************"<< endl;
 }
 
-float GSparser(std::string expression_string, float x_value, float y_value, float z_value)
-{
-   typedef float T; 
-   typedef exprtk::symbol_table<T> symbol_table_t;
-   typedef exprtk::expression<T>   expression_t;
-   typedef exprtk::parser<T>       parser_t;
-   T x= T(x_value);
-   T y= T(y_value);
-   T z= T(z_value);
-
-   symbol_table_t symbol_table;
-   symbol_table.add_variable("x",x);
-   symbol_table.add_variable("y",y);
-   symbol_table.add_variable("z",z);
-   symbol_table.add_constants();
-
-   expression_t expression;
-   expression.register_symbol_table(symbol_table);
-
-   parser_t parser;
-   parser.compile(expression_string,expression);
-
-   T result = expression.value();
-   return result;
-}
 void GaussSeidel(int precision) {
     std::string f1, f2, f3;
     float x0=0, y0=0, z0=0, x1, y1, z1, e1, e2, e3, e;
@@ -116,9 +100,9 @@ void GaussSeidel(int precision) {
 
     cout<< endl<<"Count\tx\t\ty\t\tz"<< endl;
     do {
-    x1 = GSparser(f1,x0,y0,z0);
-    y1 = GSparser(f2,x1,y0,z0);
-    z1 = GSparser(f3,x1,y1,z0);
+    x1 = Parser<double>(f1,x0,y0,z0,1);
+    y1 = Parser<double>(f2,x1,y0,z0,1);
+    z1 = Parser<double>(f3,x1,y1,z0,1);
 
     cout<< step<<"\t"<< x1<<"\t"<< y1<<"\t"<< z1<< endl;
     e1 = fabs(x0-x1);
