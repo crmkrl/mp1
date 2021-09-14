@@ -1,6 +1,7 @@
 # Machine Problem 1
 
 ## Description
+This branch is for Linux/MACOS User only.
 
 > For submission on Numerical Methods class only
 
@@ -27,13 +28,16 @@ As a user, you don't need to build or compile. You just run in the terminal. Mak
 
 ##### LINUX OS
 
-./mp1-linux
+    
+     ./mp1-linux
+    
 
 ##### MACOS
 
-./mp1-macos.out
-
-
+    
+    ./mp1-macos.out
+    
+    
 > Note: It was tested using Linux and MACOS but if there is an error running the files above, please proceed to installation first.
 
 
@@ -41,21 +45,22 @@ As a user, you don't need to build or compile. You just run in the terminal. Mak
 
 
 #### Linux OS
-    > You can watch the tutorial video located on docs/linux-tutorial
+You can watch the tutorial video located on docs/linux-tutorial
 
 1. Open the repository in VS Code.
 2. Change anything in the code (mp1.cpp) to test then build the code.
 
     > Press CTRL+SHIFT+B for building the mp1.cpp code. It will create a binary file mp1. This is the same executable file located in mp1/bin - mp1-linux.
 
-3. You can just run ./mp1 in the terminal. 
+3. You can just run ./mp1 in the terminal.  ./mp1
+
     > Note that the binary file will be created in the same directory path of your current terminal.
     ```
      ./mp1
     ```
 
 #### MACOS:
-    > You can watch the tutorial video located on docs/macos-tutorial
+ You can watch the tutorial video located on docs/macos-tutorial
 
 
 1. Open the repository in VS Code.
@@ -63,7 +68,7 @@ As a user, you don't need to build or compile. You just run in the terminal. Mak
 
     > Run the command in the terminal:
     ```
-        g++ -std=c++11 mp1.cpp
+    g++ -std=c++11 mp1.cpp
     ```
     
      It will create a obj file a.out. This is the same executable file located in mp1/bin - mp1-macos.out.
